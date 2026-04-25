@@ -10,7 +10,7 @@ export const Route = createFileRoute("/about")({
       { title: "About PR Auto Group — Prestige Rides" },
       { name: "description", content: "PR Auto Group's Prestige Rides is Columbus' premier destination for luxury pre-owned vehicles. Family-owned, customer-obsessed." },
       { property: "og:title", content: "About — Prestige Rides" },
-      { property: "og:description", content: "Family-owned luxury dealership in Columbus, OH 43229." },
+      { property: "og:description", content: "Family-owned dealership in Columbus, OH 43229." },
     ],
   }),
   component: About,
@@ -28,7 +28,7 @@ function About() {
           <span className="text-xs uppercase tracking-[0.3em] text-primary">About Us</span>
           <h1 className="text-5xl md:text-7xl font-bold mt-4">Built on Trust.<br /><span className="text-gradient-red">Driven by Passion.</span></h1>
           <p className="mt-6 text-lg text-muted-foreground max-w-2xl mx-auto">
-            PR Auto Group is a family-owned luxury dealership serving Columbus and beyond. We hand-pick every vehicle in our inventory and treat every customer like family.
+            PR Auto Group is a family-owned dealership serving Columbus and beyond. We hand-pick every vehicle in our inventory and treat every customer like family.
           </p>
         </div>
       </section>
