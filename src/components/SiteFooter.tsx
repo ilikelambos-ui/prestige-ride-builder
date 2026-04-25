@@ -15,7 +15,7 @@ export function SiteFooter() {
           <ul className="space-y-3 text-sm text-muted-foreground">
             <li className="flex gap-3"><MapPin className="h-4 w-4 mt-0.5 text-primary shrink-0" />2300 E Dublin Granville Rd<br/>Columbus, OH 43229</li>
             <li className="flex gap-3"><Phone className="h-4 w-4 mt-0.5 text-primary shrink-0" />(614) 259-7761</li>
-            <li className="flex gap-3"><Mail className="h-4 w-4 mt-0.5 text-primary shrink-0" />sales@prestigerides.com</li>
+            <li className="flex gap-3"><Mail className="h-4 w-4 mt-0.5 text-primary shrink-0" />sales@prautocolumbus.com</li>
           </ul>
         </div>
         <div>
