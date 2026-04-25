@@ -65,8 +65,8 @@ function Contact() {
             )}
           </div>
           <aside className="space-y-4">
-            <InfoCard icon={MapPin} title="Showroom" lines={["2300 E Dublin Granville Rd", "Columbus, OH"]} />
-            <InfoCard icon={Phone} title="Call or Text" lines={["(614) 555-0199"]} />
+            <InfoCard icon={MapPin} title="Showroom" lines={["2300 E Dublin Granville Rd", "Columbus, OH 43229"]} />
+            <InfoCard icon={Phone} title="Call or Text" lines={["(614) 259-7761"]} />
             <InfoCard icon={Mail} title="Email" lines={["sales@prestigerides.com"]} />
             <InfoCard icon={Clock} title="Hours" lines={["Mon–Sat: 9am–8pm", "Sun: 11am–5pm"]} />
           </aside>

@@ -7,7 +7,7 @@ export const Route = createFileRoute("/reviews")({
   head: () => ({
     meta: [
       { title: "Customer Reviews — Prestige Rides Columbus OH" },
-      { name: "description", content: "Read what customers are saying about Prestige Rides on Google. 4.9★ rated luxury dealership in Columbus, OH." },
+      { name: "description", content: "Read what customers are saying about Prestige Rides on Google. 4.9★ rated luxury dealership in Columbus, OH 43229." },
       { property: "og:title", content: "Reviews — Prestige Rides" },
       { property: "og:description", content: "4.9★ on Google. Real customer reviews." },
     ],

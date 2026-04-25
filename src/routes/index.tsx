@@ -10,10 +10,10 @@ import coupe from "@/assets/car-coupe.jpg";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Prestige Rides — Luxury Pre-Owned Vehicles | Columbus, OH" },
+      { title: "Prestige Rides — Luxury Pre-Owned Vehicles | Columbus, OH 43229" },
       { name: "description", content: "Hand-picked luxury vehicles, easy financing, and white-glove service at PR Auto Group's Prestige Rides in Columbus, Ohio." },
       { property: "og:title", content: "Prestige Rides — Ride Prestige" },
-      { property: "og:description", content: "Premium pre-owned luxury vehicles in Columbus, OH." },
+      { property: "og:description", content: "Premium pre-owned luxury vehicles in Columbus, OH 43229." },
     ],
   }),
   component: Index,
@@ -37,7 +37,7 @@ function Index() {
         </div>
         <div className="relative mx-auto max-w-7xl w-full px-4 md:px-8 py-24">
           <div className="max-w-2xl animate-fade-up">
-            <span className="inline-block text-xs uppercase tracking-[0.3em] text-primary mb-6 border border-primary/40 px-4 py-1.5 rounded-full">PR Auto Group · Columbus, OH</span>
+            <span className="inline-block text-xs uppercase tracking-[0.3em] text-primary mb-6 border border-primary/40 px-4 py-1.5 rounded-full">PR Auto Group · Columbus, OH 43229</span>
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.95] mb-6">
               <span className="text-gradient-silver">Ride</span><br />
               <span className="text-gradient-red">Prestige.</span>

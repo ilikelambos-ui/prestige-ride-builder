@@ -12,7 +12,7 @@ export const Route = createFileRoute("/inventory")({
   head: () => ({
     meta: [
       { title: "Inventory — Prestige Rides | Luxury Cars Columbus OH" },
-      { name: "description", content: "Browse our curated inventory of luxury and performance pre-owned vehicles at Prestige Rides in Columbus, OH." },
+      { name: "description", content: "Browse our curated inventory of luxury and performance pre-owned vehicles at Prestige Rides in Columbus, OH 43229." },
       { property: "og:title", content: "Inventory — Prestige Rides" },
       { property: "og:description", content: "Curated luxury and performance vehicles." },
     ],

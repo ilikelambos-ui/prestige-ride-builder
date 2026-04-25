@@ -10,7 +10,7 @@ export const Route = createFileRoute("/about")({
       { title: "About PR Auto Group — Prestige Rides" },
       { name: "description", content: "PR Auto Group's Prestige Rides is Columbus' premier destination for luxury pre-owned vehicles. Family-owned, customer-obsessed." },
       { property: "og:title", content: "About — Prestige Rides" },
-      { property: "og:description", content: "Family-owned luxury dealership in Columbus, OH." },
+      { property: "og:description", content: "Family-owned luxury dealership in Columbus, OH 43229." },
     ],
   }),
   component: About,
@@ -46,7 +46,7 @@ function About() {
             {[
               { i: Award, t: "Award-Winning", d: "Top-rated dealer in Columbus" },
               { i: Heart, t: "Customer First", d: "4.9★ Google rating" },
-              { i: Users, t: "Family Owned", d: "Local to Columbus, OH" },
+              { i: Users, t: "Family Owned", d: "Local to Columbus, OH 43229" },
               { i: Target, t: "Hand-Picked", d: "Every vehicle vetted" },
             ].map((v) => (
               <div key={v.t} className="rounded-lg border border-border/60 bg-card p-6">
@@ -62,7 +62,7 @@ function About() {
       <section className="py-20 bg-gradient-dark border-y border-border/60">
         <div className="mx-auto max-w-4xl px-4 md:px-8 text-center">
           <h2 className="text-4xl font-bold mb-4">Come See the Showroom</h2>
-          <p className="text-muted-foreground mb-8">Located at 2300 E Dublin Granville Rd, Columbus, OH</p>
+          <p className="text-muted-foreground mb-8">Located at 2300 E Dublin Granville Rd, Columbus, OH 43229</p>
           <div className="flex flex-wrap justify-center gap-4">
             <Button asChild size="lg" className="bg-gradient-red shadow-red h-14 px-8 uppercase tracking-wider">
               <Link to="/inventory">Browse Inventory</Link>
