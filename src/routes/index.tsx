@@ -3,12 +3,9 @@ import { Layout } from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, ShieldCheck, Sparkles, Wallet, Star, Car, BadgeCheck, FileSearch } from "lucide-react";
 import heroPorsche from "@/assets/hero-porsche.jpg";
-import suv from "@/assets/car-suv.jpg";
-import sedan from "@/assets/car-sedan.jpg";
-import truck from "@/assets/car-truck.jpg";
-import accord from "@/assets/car-accord.jpg";
-import tahoe from "@/assets/car-tahoe.jpg";
-import coupe from "@/assets/car-coupe.jpg";
+import { vehicles } from "@/data/vehicles";
+import { AutoDealerSchema } from "@/components/StructuredData";
+import { useLang } from "@/i18n/LanguageContext";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -31,18 +28,13 @@ const bodyStyles = [
   { emoji: "🚘", label: "Hatchback" },
 ];
 
-const arrivals = [
-  { img: suv, name: "2021 BMW X5", trim: "xDrive40i", price: "$42,995", miles: "38,200", stk: "PR2401", justIn: true },
-  { img: sedan, name: "2022 Mercedes-Benz C300", trim: "4MATIC", price: "$38,500", miles: "24,500", stk: "PR2402", justIn: true },
-  { img: accord, name: "2020 Toyota Camry", trim: "SE", price: "$22,995", miles: "41,800", stk: "PR2403" },
-  { img: truck, name: "2021 Ford F-150", trim: "XLT SuperCrew", price: "$39,500", miles: "35,600", stk: "PR2404", justIn: true },
-  { img: coupe, name: "2022 Honda Accord", trim: "Sport", price: "$28,900", miles: "19,200", stk: "PR2405" },
-  { img: tahoe, name: "2019 Chevrolet Tahoe", trim: "LT", price: "$35,500", miles: "52,300", stk: "PR2406" },
-];
+const arrivals = vehicles.slice(0, 6);
 
 function Index() {
+  const { t } = useLang();
   return (
     <Layout>
+      <AutoDealerSchema />
       {/* Hero */}
       <section className="relative min-h-[92vh] flex items-center overflow-hidden">
         <div className="absolute inset-0">
