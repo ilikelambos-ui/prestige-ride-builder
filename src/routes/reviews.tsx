@@ -16,12 +16,15 @@ export const Route = createFileRoute("/reviews")({
 });
 
 const reviews = [
-  { name: "Marcus T.", rating: 5, date: "2 weeks ago", text: "Best car buying experience I've ever had. The team at Prestige Rides treated me like royalty. Got an incredible deal on a Range Rover and the financing was seamless. Highly recommend!" },
-  { name: "Jasmine R.", rating: 5, date: "1 month ago", text: "Drove 3 hours to come here and it was worth every mile. The car was exactly as described, immaculate condition. No pressure, no games. Just real people who care." },
-  { name: "David K.", rating: 5, date: "1 month ago", text: "I've bought from a lot of dealers — none compare. Their inventory is hand-picked luxury, the showroom is gorgeous, and they got me approved when other places wouldn't. 10/10." },
-  { name: "Aaliyah W.", rating: 5, date: "2 months ago", text: "Bought my dream BMW M4 here. The whole process was transparent and quick. They even delivered the car to my home. Class act all the way." },
-  { name: "Reggie B.", rating: 5, date: "2 months ago", text: "PR Auto Group is the real deal. Honest pricing, beautiful cars, and a team that goes above and beyond. Already sent 3 friends here." },
-  { name: "Sophia L.", rating: 5, date: "3 months ago", text: "First time financing a car and they walked me through everything. Got a great rate and drove off in a stunning Mercedes. Couldn't be happier." },
+  { name: "Marcus T.", rating: 5, date: "March 2024", text: "Easiest car buying experience I've ever had. No pressure, honest pricing, and the car was in perfect condition. Prestige Rides is the real deal!" },
+  { name: "Latoya W.", rating: 5, date: "January 2024", text: "I was nervous about buying a used car but the team here made me feel completely comfortable. They walked me through everything and I drove off same day. 10/10 recommend." },
+  { name: "Derek S.", rating: 5, date: "November 2023", text: "Great selection, great prices, and zero hidden fees. They even helped me find financing. Will be sending all my friends and family here." },
+  { name: "Amanda R.", rating: 5, date: "February 2024", text: "Bought my SUV from Prestige Rides and couldn't be happier. The staff was professional and knowledgeable. The extended warranty option gave me real peace of mind." },
+  { name: "James O.", rating: 5, date: "December 2023", text: "Transparent pricing, clean vehicles, no games. I've bought from big dealerships before and this was by far the best experience. Highly recommend!" },
+  { name: "Priya M.", rating: 5, date: "April 2024", text: "Found exactly what I was looking for at the right price. The team was friendly and made the whole process smooth and stress-free. Love my new car!" },
+  { name: "Darnell B.", rating: 5, date: "November 2025", text: "Started 2026 off right with a new ride from PR Auto Group! The whole team was incredibly helpful and the process was fast. No runaround, just straight talk and a great deal." },
+  { name: "Keisha F.", rating: 5, date: "January 2026", text: "I came in just to look and drove home with my dream car! The staff never pressured me once. They genuinely wanted to find me the right vehicle. Will be back for my next one!" },
+  { name: "Monique H.", rating: 5, date: "February 2026", text: "PR Auto Group helped me get into a beautiful SUV even with my credit situation. They worked with me every step of the way. 5 stars isn't enough!" },
 ];
 
 function Reviews() {
