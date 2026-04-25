@@ -22,10 +22,34 @@ export const Route = createFileRoute("/contact")({
 
 function Contact() {
   const [submitted, setSubmitted] = useState(false);
-  const onSubmit = (e: React.FormEvent) => {
+  const [submitting, setSubmitting] = useState(false);
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitted(true);
-    toast.success("Inquiry sent — we'll be in touch soon.");
+    const fd = new FormData(e.currentTarget);
+    const payload = {
+      name: String(fd.get("name") || ""),
+      phone: String(fd.get("phone") || "0000000000"),
+      vehicle: String(fd.get("vehicle") || ""),
+      message: `${fd.get("msg") || ""}\nEmail: ${fd.get("email") || ""}`,
+    };
+    setSubmitting(true);
+    try {
+      const res = await fetch("/api/public/sms-lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      if (res.ok) {
+        setSubmitted(true);
+        toast.success("Inquiry sent — we'll be in touch soon.");
+      } else {
+        toast.error("Couldn't send. Please call (614) 259-7761.");
+      }
+    } catch {
+      toast.error("Network error. Please call (614) 259-7761.");
+    } finally {
+      setSubmitting(false);
+    }
   };
   return (
     <Layout>
@@ -58,8 +82,8 @@ function Contact() {
                   <Label htmlFor="msg" className="text-xs uppercase tracking-wider text-muted-foreground">Message <span className="text-primary">*</span></Label>
                   <Textarea id="msg" name="msg" rows={6} required className="mt-1.5 bg-background border-border/60" placeholder="Tell us about the vehicle you're interested in or any questions you have..." />
                 </div>
-                <Button type="submit" className="w-full h-14 bg-gradient-red shadow-red uppercase tracking-wider text-base font-semibold">
-                  <Send className="mr-2 h-4 w-4" />Send Inquiry
+                <Button type="submit" disabled={submitting} className="w-full h-14 bg-gradient-red shadow-red uppercase tracking-wider text-base font-semibold">
+                  <Send className="mr-2 h-4 w-4" />{submitting ? "Sending..." : "Send Inquiry"}
                 </Button>
               </form>
             )}
