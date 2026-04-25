@@ -4,13 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Gauge, Calendar, ArrowRight, Search, BadgeCheck } from "lucide-react";
 import { useMemo, useState } from "react";
-import suv from "@/assets/car-suv.jpg";
-import sedan from "@/assets/car-sedan.jpg";
-import coupe from "@/assets/car-coupe.jpg";
-import truck from "@/assets/car-truck.jpg";
-import accord from "@/assets/car-accord.jpg";
-import tahoe from "@/assets/car-tahoe.jpg";
-import porsche from "@/assets/hero-porsche.jpg";
+import { vehicles, type Body } from "@/data/vehicles";
 
 export const Route = createFileRoute("/inventory")({
   head: () => ({
@@ -23,20 +17,6 @@ export const Route = createFileRoute("/inventory")({
   }),
   component: Inventory,
 });
-
-type Body = "All" | "SUV" | "Sedan" | "Truck" | "Coupe" | "Hatchback";
-
-const vehicles: { img: string; name: string; trim: string; price: string; year: number; miles: string; mpg: string; type: Exclude<Body, "All">; stk: string; justIn?: boolean }[] = [
-  { img: suv, name: "2021 BMW X5", trim: "xDrive40i", price: "$42,995", year: 2021, miles: "38,200", mpg: "20/26", type: "SUV", stk: "PR2401", justIn: true },
-  { img: sedan, name: "2022 Mercedes-Benz C300", trim: "4MATIC", price: "$38,500", year: 2022, miles: "24,500", mpg: "23/32", type: "Sedan", stk: "PR2402", justIn: true },
-  { img: accord, name: "2020 Toyota Camry", trim: "SE", price: "$22,995", year: 2020, miles: "41,800", mpg: "28/39", type: "Sedan", stk: "PR2403" },
-  { img: truck, name: "2021 Ford F-150", trim: "XLT SuperCrew", price: "$39,500", year: 2021, miles: "35,600", mpg: "20/24", type: "Truck", stk: "PR2404", justIn: true },
-  { img: accord, name: "2022 Honda Accord", trim: "Sport", price: "$28,900", year: 2022, miles: "19,200", mpg: "30/38", type: "Sedan", stk: "PR2405" },
-  { img: tahoe, name: "2019 Chevrolet Tahoe", trim: "LT", price: "$35,500", year: 2019, miles: "52,300", mpg: "15/22", type: "SUV", stk: "PR2406" },
-  { img: coupe, name: "2021 BMW M4", trim: "Competition", price: "$72,400", year: 2021, miles: "21,300", mpg: "16/23", type: "Coupe", stk: "PR2407" },
-  { img: porsche, name: "2020 Porsche 911", trim: "Carrera S", price: "$118,900", year: 2020, miles: "18,400", mpg: "18/24", type: "Coupe", stk: "PR2408", justIn: true },
-  { img: suv, name: "2022 Range Rover Sport", trim: "HSE", price: "$78,500", year: 2022, miles: "26,100", mpg: "18/23", type: "SUV", stk: "PR2409" },
-];
 
 const tabs: Body[] = ["All", "SUV", "Sedan", "Truck", "Coupe", "Hatchback"];
 
