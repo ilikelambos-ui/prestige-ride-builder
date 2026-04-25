@@ -108,7 +108,7 @@ function Inventory() {
                     <div className="mt-2 text-[11px] text-muted-foreground">STK# {v.stk}</div>
                     <div className="mt-4 flex gap-2">
                       <Button asChild className="flex-1 bg-gradient-red uppercase tracking-wider text-xs">
-                        <Link to="/contact">Inquire <ArrowRight className="ml-1 h-3.5 w-3.5" /></Link>
+                        <Link to="/inventory/$stk" params={{ stk: v.stk }}>View <ArrowRight className="ml-1 h-3.5 w-3.5" /></Link>
                       </Button>
                       <Button asChild variant="outline" className="flex-1 uppercase tracking-wider text-xs border-foreground/20">
                         <Link to="/financing">Finance</Link>
