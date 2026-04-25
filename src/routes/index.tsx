@@ -132,7 +132,7 @@ function Index() {
                     <span>STK# {v.stk}</span>
                   </div>
                   <Button asChild className="w-full mt-4 bg-gradient-red uppercase tracking-wider text-xs">
-                    <Link to="/contact">Inquire <ArrowRight className="ml-1 h-3.5 w-3.5" /></Link>
+                    <Link to="/inventory/$stk" params={{ stk: v.stk }}>View Details <ArrowRight className="ml-1 h-3.5 w-3.5" /></Link>
                   </Button>
                 </div>
               </article>
