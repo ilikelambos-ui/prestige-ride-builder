@@ -39,8 +39,8 @@ function Reviews() {
               {[...Array(5)].map((_, i) => <Star key={i} className="h-7 w-7 fill-primary text-primary" />)}
             </div>
             <div>
-              <div className="text-3xl font-bold">4.9 / 5.0</div>
-              <div className="text-sm text-muted-foreground">Based on 200+ Google reviews</div>
+              <div className="text-3xl font-bold">5.0 / 5.0</div>
+              <div className="text-sm text-muted-foreground">Rated on Google</div>
             </div>
           </div>
           <Button asChild className="mt-6 bg-gradient-red shadow-red h-12 uppercase tracking-wider">
