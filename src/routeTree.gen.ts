@@ -18,6 +18,7 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as InventoryStkRouteImport } from './routes/inventory.$stk'
+import { Route as ApiPublicSmsLeadRouteImport } from './routes/api.public.sms-lead'
 
 const WarrantyRoute = WarrantyRouteImport.update({
   id: '/warranty',
@@ -64,6 +65,11 @@ const InventoryStkRoute = InventoryStkRouteImport.update({
   path: '/$stk',
   getParentRoute: () => InventoryRoute,
 } as any)
+const ApiPublicSmsLeadRoute = ApiPublicSmsLeadRouteImport.update({
+  id: '/api/public/sms-lead',
+  path: '/api/public/sms-lead',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -75,6 +81,7 @@ export interface FileRoutesByFullPath {
   '/trade-in': typeof TradeInRoute
   '/warranty': typeof WarrantyRoute
   '/inventory/$stk': typeof InventoryStkRoute
+  '/api/public/sms-lead': typeof ApiPublicSmsLeadRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -86,6 +93,7 @@ export interface FileRoutesByTo {
   '/trade-in': typeof TradeInRoute
   '/warranty': typeof WarrantyRoute
   '/inventory/$stk': typeof InventoryStkRoute
+  '/api/public/sms-lead': typeof ApiPublicSmsLeadRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -98,6 +106,7 @@ export interface FileRoutesById {
   '/trade-in': typeof TradeInRoute
   '/warranty': typeof WarrantyRoute
   '/inventory/$stk': typeof InventoryStkRoute
+  '/api/public/sms-lead': typeof ApiPublicSmsLeadRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -111,6 +120,7 @@ export interface FileRouteTypes {
     | '/trade-in'
     | '/warranty'
     | '/inventory/$stk'
+    | '/api/public/sms-lead'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -122,6 +132,7 @@ export interface FileRouteTypes {
     | '/trade-in'
     | '/warranty'
     | '/inventory/$stk'
+    | '/api/public/sms-lead'
   id:
     | '__root__'
     | '/'
@@ -133,6 +144,7 @@ export interface FileRouteTypes {
     | '/trade-in'
     | '/warranty'
     | '/inventory/$stk'
+    | '/api/public/sms-lead'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -144,6 +156,7 @@ export interface RootRouteChildren {
   ReviewsRoute: typeof ReviewsRoute
   TradeInRoute: typeof TradeInRoute
   WarrantyRoute: typeof WarrantyRoute
+  ApiPublicSmsLeadRoute: typeof ApiPublicSmsLeadRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -211,6 +224,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof InventoryStkRouteImport
       parentRoute: typeof InventoryRoute
     }
+    '/api/public/sms-lead': {
+      id: '/api/public/sms-lead'
+      path: '/api/public/sms-lead'
+      fullPath: '/api/public/sms-lead'
+      preLoaderRoute: typeof ApiPublicSmsLeadRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -235,6 +255,7 @@ const rootRouteChildren: RootRouteChildren = {
   ReviewsRoute: ReviewsRoute,
   TradeInRoute: TradeInRoute,
   WarrantyRoute: WarrantyRoute,
+  ApiPublicSmsLeadRoute: ApiPublicSmsLeadRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
