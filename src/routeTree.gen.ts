@@ -19,6 +19,7 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as InventoryStkRouteImport } from './routes/inventory.$stk'
 import { Route as ApiPublicSmsLeadRouteImport } from './routes/api.public.sms-lead'
+import { Route as ApiPublicFrazerFeedRouteImport } from './routes/api.public.frazer-feed'
 
 const WarrantyRoute = WarrantyRouteImport.update({
   id: '/warranty',
@@ -70,6 +71,11 @@ const ApiPublicSmsLeadRoute = ApiPublicSmsLeadRouteImport.update({
   path: '/api/public/sms-lead',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiPublicFrazerFeedRoute = ApiPublicFrazerFeedRouteImport.update({
+  id: '/api/public/frazer-feed',
+  path: '/api/public/frazer-feed',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -81,6 +87,7 @@ export interface FileRoutesByFullPath {
   '/trade-in': typeof TradeInRoute
   '/warranty': typeof WarrantyRoute
   '/inventory/$stk': typeof InventoryStkRoute
+  '/api/public/frazer-feed': typeof ApiPublicFrazerFeedRoute
   '/api/public/sms-lead': typeof ApiPublicSmsLeadRoute
 }
 export interface FileRoutesByTo {
@@ -93,6 +100,7 @@ export interface FileRoutesByTo {
   '/trade-in': typeof TradeInRoute
   '/warranty': typeof WarrantyRoute
   '/inventory/$stk': typeof InventoryStkRoute
+  '/api/public/frazer-feed': typeof ApiPublicFrazerFeedRoute
   '/api/public/sms-lead': typeof ApiPublicSmsLeadRoute
 }
 export interface FileRoutesById {
@@ -106,6 +114,7 @@ export interface FileRoutesById {
   '/trade-in': typeof TradeInRoute
   '/warranty': typeof WarrantyRoute
   '/inventory/$stk': typeof InventoryStkRoute
+  '/api/public/frazer-feed': typeof ApiPublicFrazerFeedRoute
   '/api/public/sms-lead': typeof ApiPublicSmsLeadRoute
 }
 export interface FileRouteTypes {
@@ -120,6 +129,7 @@ export interface FileRouteTypes {
     | '/trade-in'
     | '/warranty'
     | '/inventory/$stk'
+    | '/api/public/frazer-feed'
     | '/api/public/sms-lead'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -132,6 +142,7 @@ export interface FileRouteTypes {
     | '/trade-in'
     | '/warranty'
     | '/inventory/$stk'
+    | '/api/public/frazer-feed'
     | '/api/public/sms-lead'
   id:
     | '__root__'
@@ -144,6 +155,7 @@ export interface FileRouteTypes {
     | '/trade-in'
     | '/warranty'
     | '/inventory/$stk'
+    | '/api/public/frazer-feed'
     | '/api/public/sms-lead'
   fileRoutesById: FileRoutesById
 }
@@ -156,6 +168,7 @@ export interface RootRouteChildren {
   ReviewsRoute: typeof ReviewsRoute
   TradeInRoute: typeof TradeInRoute
   WarrantyRoute: typeof WarrantyRoute
+  ApiPublicFrazerFeedRoute: typeof ApiPublicFrazerFeedRoute
   ApiPublicSmsLeadRoute: typeof ApiPublicSmsLeadRoute
 }
 
@@ -231,6 +244,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiPublicSmsLeadRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/public/frazer-feed': {
+      id: '/api/public/frazer-feed'
+      path: '/api/public/frazer-feed'
+      fullPath: '/api/public/frazer-feed'
+      preLoaderRoute: typeof ApiPublicFrazerFeedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -255,17 +275,9 @@ const rootRouteChildren: RootRouteChildren = {
   ReviewsRoute: ReviewsRoute,
   TradeInRoute: TradeInRoute,
   WarrantyRoute: WarrantyRoute,
+  ApiPublicFrazerFeedRoute: ApiPublicFrazerFeedRoute,
   ApiPublicSmsLeadRoute: ApiPublicSmsLeadRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { createStart } from '@tanstack/react-start'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-  }
-}
