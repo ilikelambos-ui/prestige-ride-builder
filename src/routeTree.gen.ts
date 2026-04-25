@@ -9,13 +9,26 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as WarrantyRouteImport } from './routes/warranty'
+import { Route as TradeInRouteImport } from './routes/trade-in'
 import { Route as ReviewsRouteImport } from './routes/reviews'
 import { Route as InventoryRouteImport } from './routes/inventory'
 import { Route as FinancingRouteImport } from './routes/financing'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as InventoryStkRouteImport } from './routes/inventory.$stk'
 
+const WarrantyRoute = WarrantyRouteImport.update({
+  id: '/warranty',
+  path: '/warranty',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TradeInRoute = TradeInRouteImport.update({
+  id: '/trade-in',
+  path: '/trade-in',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ReviewsRoute = ReviewsRouteImport.update({
   id: '/reviews',
   path: '/reviews',
@@ -46,22 +59,33 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const InventoryStkRoute = InventoryStkRouteImport.update({
+  id: '/$stk',
+  path: '/$stk',
+  getParentRoute: () => InventoryRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/financing': typeof FinancingRoute
-  '/inventory': typeof InventoryRoute
+  '/inventory': typeof InventoryRouteWithChildren
   '/reviews': typeof ReviewsRoute
+  '/trade-in': typeof TradeInRoute
+  '/warranty': typeof WarrantyRoute
+  '/inventory/$stk': typeof InventoryStkRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/financing': typeof FinancingRoute
-  '/inventory': typeof InventoryRoute
+  '/inventory': typeof InventoryRouteWithChildren
   '/reviews': typeof ReviewsRoute
+  '/trade-in': typeof TradeInRoute
+  '/warranty': typeof WarrantyRoute
+  '/inventory/$stk': typeof InventoryStkRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -69,8 +93,11 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/financing': typeof FinancingRoute
-  '/inventory': typeof InventoryRoute
+  '/inventory': typeof InventoryRouteWithChildren
   '/reviews': typeof ReviewsRoute
+  '/trade-in': typeof TradeInRoute
+  '/warranty': typeof WarrantyRoute
+  '/inventory/$stk': typeof InventoryStkRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -81,8 +108,20 @@ export interface FileRouteTypes {
     | '/financing'
     | '/inventory'
     | '/reviews'
+    | '/trade-in'
+    | '/warranty'
+    | '/inventory/$stk'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/contact' | '/financing' | '/inventory' | '/reviews'
+  to:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/financing'
+    | '/inventory'
+    | '/reviews'
+    | '/trade-in'
+    | '/warranty'
+    | '/inventory/$stk'
   id:
     | '__root__'
     | '/'
@@ -91,6 +130,9 @@ export interface FileRouteTypes {
     | '/financing'
     | '/inventory'
     | '/reviews'
+    | '/trade-in'
+    | '/warranty'
+    | '/inventory/$stk'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -98,12 +140,28 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
   FinancingRoute: typeof FinancingRoute
-  InventoryRoute: typeof InventoryRoute
+  InventoryRoute: typeof InventoryRouteWithChildren
   ReviewsRoute: typeof ReviewsRoute
+  TradeInRoute: typeof TradeInRoute
+  WarrantyRoute: typeof WarrantyRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/warranty': {
+      id: '/warranty'
+      path: '/warranty'
+      fullPath: '/warranty'
+      preLoaderRoute: typeof WarrantyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/trade-in': {
+      id: '/trade-in'
+      path: '/trade-in'
+      fullPath: '/trade-in'
+      preLoaderRoute: typeof TradeInRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/reviews': {
       id: '/reviews'
       path: '/reviews'
@@ -146,16 +204,37 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/inventory/$stk': {
+      id: '/inventory/$stk'
+      path: '/$stk'
+      fullPath: '/inventory/$stk'
+      preLoaderRoute: typeof InventoryStkRouteImport
+      parentRoute: typeof InventoryRoute
+    }
   }
 }
+
+interface InventoryRouteChildren {
+  InventoryStkRoute: typeof InventoryStkRoute
+}
+
+const InventoryRouteChildren: InventoryRouteChildren = {
+  InventoryStkRoute: InventoryStkRoute,
+}
+
+const InventoryRouteWithChildren = InventoryRoute._addFileChildren(
+  InventoryRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
   FinancingRoute: FinancingRoute,
-  InventoryRoute: InventoryRoute,
+  InventoryRoute: InventoryRouteWithChildren,
   ReviewsRoute: ReviewsRoute,
+  TradeInRoute: TradeInRoute,
+  WarrantyRoute: WarrantyRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

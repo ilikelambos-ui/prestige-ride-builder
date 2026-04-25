@@ -3,12 +3,9 @@ import { Layout } from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, ShieldCheck, Sparkles, Wallet, Star, Car, BadgeCheck, FileSearch } from "lucide-react";
 import heroPorsche from "@/assets/hero-porsche.jpg";
-import suv from "@/assets/car-suv.jpg";
-import sedan from "@/assets/car-sedan.jpg";
-import truck from "@/assets/car-truck.jpg";
-import accord from "@/assets/car-accord.jpg";
-import tahoe from "@/assets/car-tahoe.jpg";
-import coupe from "@/assets/car-coupe.jpg";
+import { vehicles } from "@/data/vehicles";
+import { AutoDealerSchema } from "@/components/StructuredData";
+import { useLang } from "@/i18n/LanguageContext";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -31,18 +28,13 @@ const bodyStyles = [
   { emoji: "🚘", label: "Hatchback" },
 ];
 
-const arrivals = [
-  { img: suv, name: "2021 BMW X5", trim: "xDrive40i", price: "$42,995", miles: "38,200", stk: "PR2401", justIn: true },
-  { img: sedan, name: "2022 Mercedes-Benz C300", trim: "4MATIC", price: "$38,500", miles: "24,500", stk: "PR2402", justIn: true },
-  { img: accord, name: "2020 Toyota Camry", trim: "SE", price: "$22,995", miles: "41,800", stk: "PR2403" },
-  { img: truck, name: "2021 Ford F-150", trim: "XLT SuperCrew", price: "$39,500", miles: "35,600", stk: "PR2404", justIn: true },
-  { img: coupe, name: "2022 Honda Accord", trim: "Sport", price: "$28,900", miles: "19,200", stk: "PR2405" },
-  { img: tahoe, name: "2019 Chevrolet Tahoe", trim: "LT", price: "$35,500", miles: "52,300", stk: "PR2406" },
-];
+const arrivals = vehicles.slice(0, 6);
 
 function Index() {
+  const { t } = useLang();
   return (
     <Layout>
+      <AutoDealerSchema />
       {/* Hero */}
       <section className="relative min-h-[92vh] flex items-center overflow-hidden">
         <div className="absolute inset-0">
@@ -52,26 +44,26 @@ function Index() {
         </div>
         <div className="relative mx-auto max-w-7xl w-full px-4 md:px-8 py-24">
           <div className="max-w-2xl animate-fade-up">
-            <span className="inline-block text-xs uppercase tracking-[0.3em] text-primary mb-6 border border-primary/40 px-4 py-1.5 rounded-full">Prestige Rides · Columbus, Ohio</span>
+            <span className="inline-block text-xs uppercase tracking-[0.3em] text-primary mb-6 border border-primary/40 px-4 py-1.5 rounded-full">{t("hero.eyebrow")}</span>
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.95] mb-6">
-              <span className="text-gradient-silver">Drive Prestige.</span><br />
-              <span className="text-gradient-red">Pay Less.</span>
+              <span className="text-gradient-silver">{t("hero.titleA")}</span><br />
+              <span className="text-gradient-red">{t("hero.titleB")}</span>
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground mb-10 max-w-xl">
-              Columbus's premier pre-owned dealership. Hand-picked inventory, 100% inspected, transparent pricing — and extended warranty available on every vehicle.
+              {t("hero.body")}
             </p>
             <div className="flex flex-wrap gap-4">
               <Button asChild size="lg" className="bg-gradient-red shadow-red hover:scale-[1.02] transition-smooth h-14 px-8 text-base uppercase tracking-wider font-semibold">
-                <Link to="/inventory">Browse Inventory <ArrowRight className="ml-2 h-5 w-5" /></Link>
+                <Link to="/inventory">{t("hero.browse")} <ArrowRight className="ml-2 h-5 w-5" /></Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="h-14 px-8 text-base uppercase tracking-wider font-semibold border-foreground/30 hover:bg-foreground/5">
-                <Link to="/contact">Contact Us</Link>
+                <Link to="/contact">{t("hero.contact")}</Link>
               </Button>
             </div>
             <div className="mt-10 flex flex-wrap gap-6 text-sm text-muted-foreground">
-              <span className="flex items-center gap-2"><BadgeCheck className="h-4 w-4 text-primary" />Inspected Vehicles</span>
-              <span className="flex items-center gap-2"><ShieldCheck className="h-4 w-4 text-primary" />Trusted Since Day 1</span>
-              <span className="flex items-center gap-2"><Sparkles className="h-4 w-4 text-primary" />Service Guarantee</span>
+              <span className="flex items-center gap-2"><BadgeCheck className="h-4 w-4 text-primary" />{t("hero.b1")}</span>
+              <span className="flex items-center gap-2"><ShieldCheck className="h-4 w-4 text-primary" />{t("hero.b2")}</span>
+              <span className="flex items-center gap-2"><Sparkles className="h-4 w-4 text-primary" />{t("hero.b3")}</span>
             </div>
           </div>
         </div>
@@ -140,7 +132,7 @@ function Index() {
                     <span>STK# {v.stk}</span>
                   </div>
                   <Button asChild className="w-full mt-4 bg-gradient-red uppercase tracking-wider text-xs">
-                    <Link to="/contact">Inquire <ArrowRight className="ml-1 h-3.5 w-3.5" /></Link>
+                    <Link to="/inventory/$stk" params={{ stk: v.stk }}>View Details <ArrowRight className="ml-1 h-3.5 w-3.5" /></Link>
                   </Button>
                 </div>
               </article>
