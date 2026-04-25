@@ -11,7 +11,7 @@ export const Route = createFileRoute("/financing")({
   head: () => ({
     meta: [
       { title: "Credit Application — Prestige Rides Financing" },
-      { name: "description", content: "Apply for auto financing online. All credit types welcome. Fast, secure approval at Prestige Rides in Columbus, OH." },
+      { name: "description", content: "Apply for auto financing online. All credit types welcome. Fast, secure approval at Prestige Rides in Columbus, OH 43229." },
       { property: "og:title", content: "Credit Application — Prestige Rides" },
       { property: "og:description", content: "Fast, secure auto financing — all credit welcome." },
     ],

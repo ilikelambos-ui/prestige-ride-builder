@@ -33,8 +33,8 @@ export function SiteHeader() {
           ))}
         </nav>
         <div className="hidden items-center gap-3 lg:flex">
-          <a href="tel:+16145550199" className="flex items-center gap-2 text-sm font-semibold text-foreground hover:text-primary transition-smooth">
-            <Phone className="h-4 w-4" /> (614) 555-0199
+          <a href="tel:+16142597761" className="flex items-center gap-2 text-sm font-semibold text-foreground hover:text-primary transition-smooth">
+            <Phone className="h-4 w-4" /> (614) 259-7761
           </a>
         </div>
         <button onClick={() => setOpen(!open)} className="lg:hidden text-foreground" aria-label="Toggle menu">
