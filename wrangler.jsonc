@@ -3,5 +3,9 @@
   "name": "prestige-ride-builder",
   "compatibility_date": "2026-04-25",
   "compatibility_flags": ["nodejs_compat"],
-  "pages_build_output_dir": "./dist/client"
+  "main": "./dist/client/_worker.js",
+  "assets": {
+    "directory": "./dist/client",
+    "binding": "ASSETS"
+  }
 }
