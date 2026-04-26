@@ -2,14 +2,13 @@
   "name": "tanstack_start_ts",
   "private": true,
   "sideEffects": false,
-  "type": "module",
-  "scripts": {
-    "dev": "vite dev",
-    "build": "vite build",
-    "build:dev": "vite build --mode development",
-    "preview": "vite preview",
-    "lint": "eslint .",
-    "format": "prettier --write ."
+  "type": "module","scripts": {
+  "dev": "vite dev",
+  "build": "vite build",
+  "preview": "npm run build && wrangler dev",
+  "deploy": "npm run build && wrangler deploy",
+  "cf-typegen": "wrangler types"
+}
   },
   "dependencies": {
     "@cloudflare/vite-plugin": "^1.25.5",
