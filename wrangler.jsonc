@@ -3,11 +3,5 @@
   "name": "prestige-ride-builder",
   "compatibility_date": "2026-04-26",
   "compatibility_flags": ["nodejs_compat"],
-  "main": ".output/server/index.mjs",
-  "assets": {
-    "directory": ".output/public"
-  },
-  "observability": {
-    "enabled": true
-  }
+  "main": "@tanstack/react-start/server-entry"
 }
