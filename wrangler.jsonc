@@ -3,7 +3,7 @@
   "name": "prestige-ride-builder",
   "compatibility_date": "2026-04-26",
   "compatibility_flags": ["nodejs_compat"],
-  "main": "@tanstack/react-start/server-entry"
-"pages_build_output_dir": "dist/client",
+  "main": "@tanstack/react-start/server-entry",
+"pages_build_output_dir": "dist/client"
 
 }
